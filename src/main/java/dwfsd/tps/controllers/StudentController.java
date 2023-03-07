@@ -36,7 +36,7 @@ public class StudentController {
         return studentService.update(dto);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("{id}")
     public boolean delete(@PathVariable("id") Long id) {
         LOGGER.debug("Student Controller: start method delete");
         return studentService.delete(id);
