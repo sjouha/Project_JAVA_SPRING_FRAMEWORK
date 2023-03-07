@@ -2,7 +2,12 @@ package dwfsd.tps.controllers;
 
 import dwfsd.tps.dtos.StudentDTO;
 import dwfsd.tps.services.IStudentService;
+import dwfsd.tps.services.StudentService;
+import org.slf4j.ILoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,26 +16,35 @@ import java.util.List;
 @RequestMapping("/students")
 public class StudentController {
 
-    @Autowired
-    private IStudentService IStudentService;
+    private final static Logger LOGGER= LoggerFactory.getLogger(StudentController.class);
+
+    private StudentService studentService;
+
+    public StudentController(@Qualifier("serviceStudent") StudentService studentService) {
+        this.studentService = studentService;
+    }
 
     @PostMapping
-    public StudentDTO save(StudentDTO dto) {
-        return IStudentService.save(dto);
+    public StudentDTO save(@RequestBody StudentDTO dto) {
+        LOGGER.debug("Student Controller: start method save");
+        return studentService.save(dto);
     }
 
     @PutMapping
-    public StudentDTO update(StudentDTO dto) {
-        return IStudentService.update(dto);
+    public StudentDTO update(@RequestBody StudentDTO dto) {
+        LOGGER.debug("Student Controller: start method update");
+        return studentService.update(dto);
     }
 
-    @DeleteMapping
-    public boolean delete(Long id) {
-        return IStudentService.delete(id);
+    @DeleteMapping("/{id}")
+    public boolean delete(@PathVariable("id") Long id) {
+        LOGGER.debug("Student Controller: start method delete");
+        return studentService.delete(id);
     }
 
     @GetMapping
     public List<StudentDTO> selectAll() {
-        return IStudentService.selectAll();
+        LOGGER.debug("Student Controller: start method selectAll");
+        return studentService.selectAll();
     }
 }
