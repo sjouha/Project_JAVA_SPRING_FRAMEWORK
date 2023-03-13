@@ -37,9 +37,9 @@ public class StudentController {
     }
 
     @DeleteMapping("/{id}")
-    public boolean delete(@PathVariable("id") Long id) {
+    public void delete(@PathVariable("id") Long id) {
         LOGGER.debug("Student Controller: start method delete");
-        return studentService.delete(id);
+        studentService.delete(id);
     }
 
     @GetMapping

@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.ResourceBundle;
+
 @SpringBootApplication
 public class ProjectApplication {
 
@@ -12,8 +14,10 @@ public class ProjectApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ProjectApplication.class, args);
 
+
+
 		LOGGER.debug("Application Started.....");
-		LOGGER.info("Access URL DWFSD : http://localhost:8086/api/");
+		LOGGER.info("Access URL DWFSD : http://localhost:8083/api/");
 
 
 	}
