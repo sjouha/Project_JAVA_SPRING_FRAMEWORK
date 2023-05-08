@@ -1,14 +1,12 @@
 server:
-  port: 8083
-  servlet:
-    context-path: /api
+  port: 8087
 
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/pfe_base
+    url: jdbc:mysql://localhost:3306/pfe
     username: root
-    password:
+    password: root
   jpa:
     database: mysql
     show-sql: true
@@ -17,3 +15,5 @@ spring:
 logging:
   level:
     org.springframework.web: DEBUG
+    dwfsd.tps: DEBUG
+    org.hibernate: ERROR
